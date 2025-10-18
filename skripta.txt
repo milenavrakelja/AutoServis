@@ -1,0 +1,210 @@
+-- -----------------------------------------------------
+-- Schema autoservis
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `autoservis` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `autoservis`;
+
+-- -----------------------------------------------------
+-- Table `autoservis`.`Klijenti`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autoservis`.`Klijenti` (
+  `KlijentId` INT NOT NULL AUTO_INCREMENT,
+  `Kontakt` VARCHAR(45) NULL,
+  `Adresa` VARCHAR(45) NULL,
+  `KorisnickoIme` VARCHAR(45) NULL,
+  `Lozinka` VARCHAR(45) NULL,
+  `SelectedTheme` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`KlijentId`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `autoservis`.`Vozila`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autoservis`.`Vozila` (
+  `VoziloId` INT NOT NULL AUTO_INCREMENT,
+  `Model` VARCHAR(45) NULL,
+  `GodinaProizvodnje` INT NULL,
+  `KlijentId` INT NOT NULL,
+  PRIMARY KEY (`VoziloId`),
+  INDEX `IX_Vozila_KlijentId` (`KlijentId` ASC) VISIBLE,
+  CONSTRAINT `FK_Vozila_Klijenti_KlijentId`
+    FOREIGN KEY (`KlijentId`)
+    REFERENCES `autoservis`.`Klijenti` (`KlijentId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `autoservis`.`Statusi`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autoservis`.`Statusi` (
+  `StatusId` INT NOT NULL AUTO_INCREMENT,
+  `Opis` VARCHAR(45) NULL,
+  PRIMARY KEY (`StatusId`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `autoservis`.`Rezervacije`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autoservis`.`Rezervacije` (
+  `RezervacijaId` INT NOT NULL AUTO_INCREMENT,
+  `DatumRezervacije` DATE NULL,
+  `DatumUsluge` DATE NULL,
+  `OpisProblema` VARCHAR(45) NULL,
+  `KlijentId` INT NOT NULL,
+  `StatusId` INT NOT NULL,
+  PRIMARY KEY (`RezervacijaId`),
+  INDEX `IX_Rezervacije_KlijentId` (`KlijentId` ASC) VISIBLE,
+  INDEX `IX_Rezervacije_StatusId` (`StatusId` ASC) VISIBLE,
+  CONSTRAINT `FK_Rezervacije_Klijenti_KlijentId`
+    FOREIGN KEY (`KlijentId`)
+    REFERENCES `autoservis`.`Klijenti` (`KlijentId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_Rezervacije_Statusi_StatusId`
+    FOREIGN KEY (`StatusId`)
+    REFERENCES `autoservis`.`Statusi` (`StatusId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `autoservis`.`Radnici`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autoservis`.`Radnici` (
+  `RadnikId` INT NOT NULL AUTO_INCREMENT,
+  `Ime` VARCHAR(45) NOT NULL,
+  `Prezime` VARCHAR(45) NULL,
+  `Kontakt` VARCHAR(45) NULL,
+  `SelectedTheme` VARCHAR(20) NOT NULL,
+  `KorisnickoIme` VARCHAR(45) NOT NULL,
+  `Lozinka` VARCHAR(100) NOT NULL,
+  `Uloga` VARCHAR(20) NOT NULL DEFAULT 'Radnik',
+  PRIMARY KEY (`RadnikId`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `autoservis`.`TipoviUsluge`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autoservis`.`TipoviUsluge` (
+  `TipUslugeId` INT NOT NULL AUTO_INCREMENT,
+  `Cijena` DECIMAL(6,2) NULL,
+  `Naziv` VARCHAR(45) NULL,
+  PRIMARY KEY (`TipUslugeId`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `autoservis`.`Usluge`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autoservis`.`Usluge` (
+  `UslugaId` INT NOT NULL AUTO_INCREMENT,
+  `RezervacijaId` INT NOT NULL,
+  `TipUslugeId` INT NOT NULL,
+  `RadnikId` INT NOT NULL,
+  `StatusId` INT NOT NULL,
+  PRIMARY KEY (`UslugaId`),
+  INDEX `IX_Usluge_RezervacijaId` (`RezervacijaId` ASC) VISIBLE,
+  INDEX `IX_Usluge_TipUslugeId` (`TipUslugeId` ASC) VISIBLE,
+  INDEX `IX_Usluge_RadnikId` (`RadnikId` ASC) VISIBLE,
+  INDEX `IX_Usluge_StatusId` (`StatusId` ASC) VISIBLE,
+  CONSTRAINT `FK_Usluge_Rezervacije_RezervacijaId`
+    FOREIGN KEY (`RezervacijaId`)
+    REFERENCES `autoservis`.`Rezervacije` (`RezervacijaId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_Usluge_TipoviUsluge_TipUslugeId`
+    FOREIGN KEY (`TipUslugeId`)
+    REFERENCES `autoservis`.`TipoviUsluge` (`TipUslugeId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_Usluge_Radnici_RadnikId`
+    FOREIGN KEY (`RadnikId`)
+    REFERENCES `autoservis`.`Radnici` (`RadnikId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_Usluge_Statusi_StatusId`
+    FOREIGN KEY (`StatusId`)
+    REFERENCES `autoservis`.`Statusi` (`StatusId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `autoservis`.`Djelovi`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autoservis`.`Djelovi` (
+  `DioId` INT NOT NULL AUTO_INCREMENT,
+  `Naziv` VARCHAR(45) NULL,
+  `KolicinaNaLageru` INT NULL,
+  PRIMARY KEY (`DioId`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `autoservis`.`Racuni`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autoservis`.`Racuni` (
+  `RacunId` INT NOT NULL AUTO_INCREMENT,
+  `BrojRacuna` VARCHAR(45) NULL,
+  `DatumIzdavanja` DATE NULL,
+  `UkupnaCijena` DECIMAL(10,2) NULL,
+  `KlijentId` INT NOT NULL,
+  `RezervacijaId` INT NOT NULL,
+  PRIMARY KEY (`RacunId`),
+  INDEX `IX_Racuni_KlijentId` (`KlijentId` ASC) VISIBLE,
+  INDEX `IX_Racuni_RezervacijaId` (`RezervacijaId` ASC) VISIBLE,
+  CONSTRAINT `FK_Racuni_Klijenti_KlijentId`
+    FOREIGN KEY (`KlijentId`)
+    REFERENCES `autoservis`.`Klijenti` (`KlijentId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_Racuni_Rezervacije_RezervacijaId`
+    FOREIGN KEY (`RezervacijaId`)
+    REFERENCES `autoservis`.`Rezervacije` (`RezervacijaId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `autoservis`.`StavkeRacuna`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autoservis`.`StavkeRacuna` (
+  `StavkaRacunaId` INT NOT NULL AUTO_INCREMENT,
+  `Kolicina` INT NOT NULL DEFAULT 1,
+  `CijenaPoJedinici` DECIMAL(10,2) NULL,
+  `Ukupno` DECIMAL(10,2) NULL,
+  `RacunId` INT NOT NULL,
+  `UslugaId` INT NOT NULL,
+  PRIMARY KEY (`StavkaRacunaId`),
+  INDEX `IX_StavkeRacuna_RacunId` (`RacunId` ASC) VISIBLE,
+  INDEX `IX_StavkeRacuna_UslugaId` (`UslugaId` ASC) VISIBLE,
+  CONSTRAINT `FK_StavkeRacuna_Racuni_RacunId`
+    FOREIGN KEY (`RacunId`)
+    REFERENCES `autoservis`.`Racuni` (`RacunId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_StavkeRacuna_Usluge_UslugaId`
+    FOREIGN KEY (`UslugaId`)
+    REFERENCES `autoservis`.`Usluge` (`UslugaId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `autoservis`.`DjeloviUsluge` (Many-to-Many)
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `autoservis`.`DjeloviUsluge` (
+  `DjeloviDioId` INT NOT NULL,
+  `UslugeUslugaId` INT NOT NULL,
+  PRIMARY KEY (`DjeloviDioId`, `UslugeUslugaId`),
+  INDEX `IX_DjeloviUsluge_UslugeUslugaId` (`UslugeUslugaId` ASC) VISIBLE,
+  CONSTRAINT `FK_DjeloviUsluge_Djelovi_DjeloviDioId`
+    FOREIGN KEY (`DjeloviDioId`)
+    REFERENCES `autoservis`.`Djelovi` (`DioId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_DjeloviUsluge_Usluge_UslugeUslugaId`
+    FOREIGN KEY (`UslugeUslugaId`)
+    REFERENCES `autoservis`.`Usluge` (`UslugaId`)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;

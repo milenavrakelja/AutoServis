@@ -1,0 +1,24 @@
+
+INSERT INTO `autoservis`.`Statusi` (`StatusId`, `Opis`) VALUES
+(1, 'Na čekanju'),
+(2, 'U obradi'),
+(3, 'Završeno'),
+(4, 'Otkazano');
+
+INSERT INTO `autoservis`.`TipoviUsluge` (`TipUslugeId`, `Cijena`, `Naziv`) VALUES
+(1, 50.00, 'Zamjena ulja'),
+(2, 150.00, 'Servis motora'),
+(3, 80.00, 'Provjerа kočnica');
+
+INSERT INTO `autoservis`.`Djelovi` (`DioId`, `Naziv`, `KolicinaNaLageru`) VALUES
+(1, 'Filter ulja', 300),
+(2, 'Kočione pločice', 250),
+(3, 'Lamela', 155);
+
+INSERT INTO `autoservis`.`Radnici` (`RadnikId`, `Ime`, `Prezime`, `Kontakt`, `KorisnickoIme`, `Lozinka`, `Uloga`, `SelectedTheme`) VALUES
+(2, 'Krstan', NULL, NULL, 'krstanpavlovic', 'krstan123', 'Radnik', 'Blue'),
+(3, 'marina', NULL, NULL, 'marinajokic', 'marina123', 'Administrator', 'Green');
+
+INSERT INTO `autoservis`.`Klijenti` (`KlijentId`, `Kontakt`, `Adresa`, `KorisnickoIme`, `Lozinka`, `SelectedTheme`) VALUES
+(2, 'marko@gmail.com', 'Stepe Stepanovica 10', 'markopljic', 'marko123', 'Blue'),
+(4, 'ivonapajic@gmail.com', 'Filipa Filipovica 2', 'ivonapajic', 'ivona123', 'Red');
