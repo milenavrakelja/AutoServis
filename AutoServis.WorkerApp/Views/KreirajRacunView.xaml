@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="AutoServis.WorkerApp.Views.KreirajRacunView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <!-- Za ukupnu cijenu -->
+            <RowDefinition Height="Auto"/>
+            <!-- Za dugme -->
+        </Grid.RowDefinitions>
+
+        <!-- Naslov -->
+        <TextBlock Text="{DynamicResource Worker_KreirajRacun_Title}" 
+                   FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <!-- Sve informacije o rezervaciji i klijentu -->
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,0,0,15">
+            <!-- Klijent -->
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{DynamicResource Worker_KreirajRacun_KlijentLabel}" FontWeight="Bold" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Rezervacija.Klijent.ImePrezime}" Margin="0,0,15,0"/>
+                <TextBlock Text="{Binding Rezervacija.Klijent.KorisnickoIme}" FontStyle="Italic" Foreground="Gray"/>
+            </StackPanel>
+
+            <!-- Kontakt i adresa -->
+            <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                <TextBlock Text="{DynamicResource Worker_Rezervacije_KontaktLabel}" FontWeight="Bold" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Rezervacija.Klijent.Kontakt}" Margin="0,0,15,0"/>
+                <TextBlock Text="{DynamicResource Worker_Rezervacije_AdresaLabel}" FontWeight="Bold" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Rezervacija.Klijent.Adresa}" />
+            </StackPanel>
+
+            <!-- Rezervacija -->
+            <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                <TextBlock Text="{DynamicResource Worker_Rezervacije_DatumUslugeHeader}" FontWeight="Bold" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Rezervacija.DatumUsluge, StringFormat='{}{0:dd.MM.yyyy}'}" Margin="0,0,15,0"/>
+                <TextBlock Text="{DynamicResource Worker_Rezervacije_StatusHeader}" FontWeight="Bold" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Rezervacija.Status.Opis}" Margin="0,0,15,0"/>
+                <TextBlock Text="{DynamicResource Worker_Rezervacije_OpisProblemaHeader}" FontWeight="Bold" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding Rezervacija.OpisProblema}" TextWrapping="Wrap" MaxWidth="300"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Tabela stavki -->
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Stavke}" 
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  Background="{DynamicResource BackgroundBrush}"
+                  Foreground="{DynamicResource ForegroundBrush}"
+                  BorderBrush="{DynamicResource BorderBrush}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{DynamicResource Worker_KreirajRacun_UslugaHeader}" 
+                                    Binding="{Binding Usluga.TipUsluge.Naziv}" Width="200"/>
+                <DataGridTextColumn Header="{DynamicResource Worker_KreirajRacun_KolicinaHeader}" 
+                                    Binding="{Binding Kolicina}" Width="80"/>
+                <DataGridTextColumn Header="{DynamicResource Worker_KreirajRacun_CijenaHeader}" 
+                                    Binding="{Binding CijenaPoJedinici, StringFormat='{}{0:N2} KM'}" Width="100"/>
+                <DataGridTextColumn Header="{DynamicResource Worker_KreirajRacun_UkupnoHeader}" 
+                                    Binding="{Binding Ukupno, StringFormat='{}{0:N2} KM'}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Ukupna cijena -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,10">
+            <TextBlock Text="{DynamicResource Worker_KreirajRacun_UkupnaCijenaLabel}" 
+                       FontWeight="Bold" Margin="0,0,10,0"/>
+            <TextBlock Text="{Binding UkupnaCijena, StringFormat='{}{0:N2} KM'}" 
+                       FontWeight="Bold" FontSize="16"/>
+        </StackPanel>
+
+        <!-- Dugme -->
+        <Button Grid.Row="4" 
+                Content="{DynamicResource Worker_KreirajRacun_IzdajRacunButton}" 
+                Click="IzdajRacunBtn_Click" 
+                Width="120" HorizontalAlignment="Right" Margin="0,15,0,0"/>
+    </Grid>
+</UserControl>

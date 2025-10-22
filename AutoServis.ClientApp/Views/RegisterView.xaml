@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="AutoServis.ClientApp.Views.RegisterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="40">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="350">
+            <!-- Naslov -->
+            <TextBlock Text="{DynamicResource Register_Title}" 
+                       FontSize="24" FontWeight="Bold" Margin="0,0,0,20"
+                       Foreground="{DynamicResource PrimaryBrush}"
+                       HorizontalAlignment="Center"/>
+
+            <!-- Korisničko ime -->
+            <TextBlock Text="{DynamicResource Register_UsernameHint}" 
+                       Margin="0,0,0,5" FontWeight="SemiBold"/>
+            <TextBox x:Name="UsernameBox" Margin="0,0,0,10"/>
+
+            <!-- Lozinka -->
+            <TextBlock Text="{DynamicResource Register_PasswordHint}" 
+                       Margin="0,0,0,5" FontWeight="SemiBold"/>
+            <PasswordBox x:Name="PasswordBox" Margin="0,0,0,10"/>
+
+            <!-- Potvrda lozinke -->
+            <TextBlock Text="{DynamicResource Register_ConfirmPasswordHint}" 
+                       Margin="0,0,0,5" FontWeight="SemiBold"/>
+            <PasswordBox x:Name="ConfirmPasswordBox" Margin="0,0,0,10"/>
+
+            <!-- Kontakt -->
+            <TextBlock Text="{DynamicResource Register_ContactHint}" 
+                       Margin="0,0,0,5" FontWeight="SemiBold"/>
+            <TextBox x:Name="ContactBox" Margin="0,0,0,10"/>
+
+            <!-- Adresa -->
+            <TextBlock Text="{DynamicResource Register_AddressHint}" 
+                       Margin="0,0,0,5" FontWeight="SemiBold"/>
+            <TextBox x:Name="AddressBox" Margin="0,0,0,20"/>
+
+            <!-- Dugme za registraciju -->
+            <Button Content="{DynamicResource Register_Button}" 
+                    Click="RegisterBtn_Click" 
+                    Margin="0,0,0,10"/>
+
+            <!-- Link za prijavu -->
+            <Button Content="{DynamicResource Register_LoginLink}" 
+                    Click="LoginBtn_Click" 
+                    Background="Transparent" BorderBrush="Transparent"
+                    HorizontalAlignment="Center" Padding="5">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock Text="{TemplateBinding Content}"
+                                   Foreground="{DynamicResource PrimaryBrush}"
+                                   TextDecorations="Underline"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="{DynamicResource AccentBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

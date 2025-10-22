@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <!-- LoginView -->
+    <System:String x:Key="Login_Title">Prijavite se</System:String>
+    <System:String x:Key="Login_UsernameHint">Korisničko ime</System:String>
+    <System:String x:Key="Login_PasswordHint">Lozinka</System:String>
+    <System:String x:Key="Login_Button">Prijavi se</System:String>
+    <System:String x:Key="Login_RegisterLink">Nemate nalog? Registrujte se</System:String>
+
+    <!-- RegisterView -->
+    <System:String x:Key="Register_Title">Registrujte se</System:String>
+    <System:String x:Key="Register_UsernameHint">Korisničko ime</System:String>
+    <System:String x:Key="Register_PasswordHint">Lozinka</System:String>
+    <System:String x:Key="Register_ConfirmPasswordHint">Potvrdite lozinku</System:String>
+    <System:String x:Key="Register_ContactHint">Kontakt (email/telefon)</System:String>
+    <System:String x:Key="Register_AddressHint">Adresa</System:String>
+    <System:String x:Key="Register_Button">Registruj se</System:String>
+    <System:String x:Key="Register_LoginLink">Već imate nalog? Prijavite se</System:String>
+
+    <!-- MainMenuView -->
+    <System:String x:Key="MainMenu_Title">Meni</System:String>
+    <System:String x:Key="MainMenu_TipoviUsluge">Tipovi usluga</System:String>
+    <System:String x:Key="MainMenu_Rezervacije">Rezervacije</System:String>
+    <System:String x:Key="MainMenu_Racuni">Računi</System:String>
+    <System:String x:Key="MainMenu_Logout">Odjavi se</System:String>
+
+    <!-- TipUslugeView -->
+    <System:String x:Key="TipUsluge_Title">Tipovi usluga</System:String>
+    <System:String x:Key="TipUsluge_NazivHeader">Naziv</System:String>
+    <System:String x:Key="TipUsluge_CijenaHeader">Cijena</System:String>
+
+    <!-- RezervacijeView -->
+    <System:String x:Key="Rezervacije_Title">Kreiraj rezervaciju</System:String>
+    <System:String x:Key="Rezervacije_ModelLabel">Model vozila:</System:String>
+    <System:String x:Key="Rezervacije_GodinaLabel">Godina proizvodnje:</System:String>
+    <System:String x:Key="Rezervacije_OpisLabel">Opis problema:</System:String>
+    <System:String x:Key="Rezervacije_DatumLabel">Datum usluge (YYYY-MM-DD):</System:String>
+    <System:String x:Key="Rezervacije_KreirajButton">Kreiraj rezervaciju</System:String>
+    <System:String x:Key="Rezervacije_DatumUslugeHeader">Datum usluge</System:String>
+    <System:String x:Key="Rezervacije_StatusHeader">Status</System:String>
+    <System:String x:Key="Rezervacije_OpisHeader">Opis</System:String>
+
+    <!-- RacuniView -->
+    <System:String x:Key="Racuni_Title">Pregled računa</System:String>
+    <System:String x:Key="Racuni_PretraziButton">Pretraži po datumu</System:String>
+    <System:String x:Key="Racuni_PrikaziSveButton">Prikaži sve</System:String>
+    <System:String x:Key="Racuni_BrojRacunaHeader">Broj računa</System:String>
+    <System:String x:Key="Racuni_DatumHeader">Datum</System:String>
+    <System:String x:Key="Racuni_UkupnoHeader">Ukupno</System:String>
+
+    <!-- LoginView -->
+    <System:String x:Key="Client_Login_UnesiteKredencijale">Unesite korisničko ime i lozinku.</System:String>
+    <System:String x:Key="Client_Login_PogresnoKredencijale">Pogrešno korisničko ime ili lozinka.</System:String>
+
+    <!-- RegisterView -->
+    <System:String x:Key="Client_Register_SvaPoljaObavezna">Sva polja su obavezna.</System:String>
+    <System:String x:Key="Client_Register_LozinkeNePoklapaju">Lozinke se ne poklapaju.</System:String>
+
+    <!-- RacuniView -->
+    <System:String x:Key="Client_Racuni_NistePrijavljeni">Niste prijavljeni kao klijent.</System:String>
+    <System:String x:Key="Client_Racuni_IzaberiteDatum">Izaberite datum za pretragu.</System:String>
+
+    <!-- RezervacijeView -->
+    <System:String x:Key="Client_Rezervacije_NistePrijavljeni">Niste prijavljeni! Vraćanje na login...</System:String>
+    <System:String x:Key="Client_Rezervacije_UnesiteModel">Unesite model vozila.</System:String>
+    <System:String x:Key="Client_Rezervacije_ValidnaGodina">Unesite validnu godinu proizvodnje (npr. 2020).</System:String>
+    <System:String x:Key="Client_Rezervacije_UnesiteOpis">Unesite opis problema.</System:String>
+    <System:String x:Key="Client_Rezervacije_ValidanDatum">Unesite datum u formatu YYYY-MM-DD (npr. 2025-04-10).</System:String>
+    <System:String x:Key="Client_Rezervacije_DatumProšlost">Datum usluge ne može biti u prošlosti.</System:String>
+    <System:String x:Key="Client_Rezervacije_UspjehKreiranja">Rezervacija je uspješno kreirana!</System:String>
+    <System:String x:Key="Client_Rezervacije_UspjehTitle">Uspeh</System:String>
+    <System:String x:Key="Client_Rezervacije_GreskaKreiranja">Greška prilikom kreiranja rezervacije:</System:String>
+    <System:String x:Key="Client_Rezervacije_GreskaTitle">Greška</System:String>
+
+    <!-- MainMenuView - Theme Selection -->
+    <System:String x:Key="MainMenu_TemaLabel">Tema</System:String>
+    <System:String x:Key="MainMenu_TemaPlava">Plava</System:String>
+    <System:String x:Key="MainMenu_TemaZelena">Zelena</System:String>
+    <System:String x:Key="MainMenu_TemaCrvena">Crvena</System:String>
+
+</ResourceDictionary>

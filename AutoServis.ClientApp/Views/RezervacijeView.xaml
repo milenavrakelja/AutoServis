@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="AutoServis.ClientApp.Views.RezervacijeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Naslov -->
+            <TextBlock Text="{DynamicResource Rezervacije_Title}" 
+                       FontWeight="Bold" Margin="0,0,0,10" Grid.Row="0"/>
+
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="{DynamicResource Rezervacije_ModelLabel}" Margin="0,0,0,5"/>
+                <TextBox x:Name="ModelBox" Text="Golf"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2">
+                <TextBlock Text="{DynamicResource Rezervacije_GodinaLabel}" Margin="0,0,0,5"/>
+                <TextBox x:Name="GodinaBox" Text="2020"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3">
+                <TextBlock Text="{DynamicResource Rezervacije_OpisLabel}" Margin="0,0,0,5"/>
+                <TextBox x:Name="OpisBox" Text="Problemi sa kočnicama"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4">
+                <TextBlock Text="{DynamicResource Rezervacije_DatumLabel}" Margin="0,0,0,5"/>
+                <TextBox x:Name="DatumBox" Text="2025-04-10"/>
+            </StackPanel>
+
+            <!-- DUGME ZA KREIRANJE -->
+            <Button Grid.Row="5" 
+                    Content="{DynamicResource Rezervacije_KreirajButton}" 
+                    Click="KreirajBtn_Click" 
+                    Width="180" 
+                    Margin="0,15"
+                    HorizontalAlignment="Left"/>
+
+            <!-- Container za DataGrid i poruku -->
+            <Grid Grid.Row="6">
+                <DataGrid x:Name="RezervacijeGrid"
+                          AutoGenerateColumns="False" 
+                          IsReadOnly="True" 
+                          CanUserAddRows="False"
+                          RowHeight="50"
+                          ItemsSource="{Binding Rezervacije}"
+                          Background="{DynamicResource BackgroundBrush}"
+                          Foreground="{DynamicResource ForegroundBrush}"
+                          BorderBrush="{DynamicResource BorderBrush}"
+                          GridLinesVisibility="Horizontal">
+                    <DataGrid.Style>
+                        <Style TargetType="DataGrid">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsEmpty}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.Style>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="{DynamicResource Rezervacije_DatumUslugeHeader}" 
+                                            Binding="{Binding DatumUsluge}" Width="120"/>
+                        <DataGridTextColumn Header="{DynamicResource Rezervacije_StatusHeader}" 
+                                            Binding="{Binding Status.Opis}" Width="120"/>
+                        <DataGridTextColumn Header="{DynamicResource Rezervacije_OpisHeader}" 
+                                            Binding="{Binding OpisProblema}" Width="250"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <TextBlock Text="Nema rezervacija za prikaz."
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="16">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsEmpty}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

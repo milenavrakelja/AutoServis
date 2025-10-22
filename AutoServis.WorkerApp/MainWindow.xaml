@@ -1,0 +1,10 @@
+﻿<Window x:Class="AutoServis.WorkerApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AutoServis - Radnik/Admin"
+        Height="600" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BackgroundBrush}"
+        Foreground="{DynamicResource ForegroundBrush}">
+    <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+</Window>

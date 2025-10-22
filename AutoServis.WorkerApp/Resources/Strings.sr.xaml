@@ -1,0 +1,167 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <!-- LoginView -->
+    <System:String x:Key="Worker_Login_Title">Prijavite se kao radnik</System:String>
+    <System:String x:Key="Worker_Login_UsernameHint">Korisničko ime</System:String>
+    <System:String x:Key="Worker_Login_PasswordHint">Lozinka</System:String>
+    <System:String x:Key="Worker_Login_Button">Prijavi se</System:String>
+    <System:String x:Key="Worker_Login_RegisterLink">Nemate nalog? Registrujte se</System:String>
+    <System:String x:Key="Worker_Login_UnesiteKredencijale">Unesite korisničko ime i lozinku.</System:String>
+    <System:String x:Key="Worker_Login_PogresnoKredencijale">Pogrešno korisničko ime ili lozinka.</System:String>
+
+    <!-- RegisterView -->
+    <System:String x:Key="Worker_Register_Title">Registracija radnika</System:String>
+    <System:String x:Key="Worker_Register_ImeHint">Ime *</System:String>
+    <System:String x:Key="Worker_Register_PrezimeHint">Prezime</System:String>
+    <System:String x:Key="Worker_Register_KontaktHint">Kontakt (email/telefon)</System:String>
+    <System:String x:Key="Worker_Register_UsernameHint">Korisničko ime *</System:String>
+    <System:String x:Key="Worker_Register_PasswordHint">Lozinka *</System:String>
+    <System:String x:Key="Worker_Register_ConfirmPasswordHint">Potvrdite lozinku *</System:String>
+    <System:String x:Key="Worker_Register_Button">Registruj se</System:String>
+    <System:String x:Key="Worker_Register_LoginLink">Već imate nalog? Prijavite se</System:String>
+    <System:String x:Key="Worker_Register_ObaveznaPolja">Ime, korisničko ime i lozinka su obavezni.</System:String>
+    <System:String x:Key="Worker_Register_LozinkeNePoklapaju">Lozinke se ne poklapaju.</System:String>
+
+    <!-- DashboardView -->
+    <System:String x:Key="Worker_Dashboard_TipoviUsluge">Tipovi usluga</System:String>
+    <System:String x:Key="Worker_Dashboard_DijeloviNaLageru">Dijelovi na lageru</System:String>
+    <System:String x:Key="Worker_Dashboard_Rezervacije">Rezervacije</System:String>
+    <System:String x:Key="Worker_Dashboard_Klijenti">Klijenti</System:String>
+    <System:String x:Key="Worker_Dashboard_UpravljanjeKorisnicima">Upravljanje korisnicima</System:String>
+    <System:String x:Key="Worker_Dashboard_Logout">Odjavi se</System:String>
+
+    <!-- TipoviUslugeView -->
+    <System:String x:Key="Worker_Tipovi_Title">Upravljanje tipovima usluga</System:String>
+    <System:String x:Key="Worker_Tipovi_NazivUslugeHint">Naziv usluge</System:String>
+    <System:String x:Key="Worker_Tipovi_CijenaHint">Cijena</System:String>
+    <System:String x:Key="Worker_Tipovi_DodajButton">Dodaj</System:String>
+    <System:String x:Key="Worker_Tipovi_OsveziButton">Osvježi</System:String>
+    <System:String x:Key="Worker_Tipovi_NazivHeader">Naziv</System:String>
+    <System:String x:Key="Worker_Tipovi_CijenaHeader">Cijena</System:String>
+    <System:String x:Key="Worker_Tipovi_IzmeniCenuButton">Izmijeni cijenu</System:String>
+    <System:String x:Key="Worker_Tipovi_ObrisiButton">Obriši</System:String>
+    <System:String x:Key="Worker_Tipovi_AkcijeHeader">Akcije</System:String>
+    <System:String x:Key="Worker_Tipovi_UnesiteNazivICijenu">Unesite naziv i cijenu.</System:String>
+    <System:String x:Key="Worker_Tipovi_ValidnaCijena">Unesite validnu cijenu.</System:String>
+    <System:String x:Key="Worker_Tipovi_NovaCijenaPrompt">Nova cijena:</System:String>
+    <System:String x:Key="Worker_Tipovi_IzmjenaCeneTitle">Izmjena cijene</System:String>
+    <System:String x:Key="Worker_Tipovi_PotvrdaBrisanja">Da li želite da obrišete tip usluge '{0}'?</System:String>
+    <System:String x:Key="Worker_Tipovi_PotvrdaTitle">Potvrda</System:String>
+
+    <!-- DijeloviLagerView -->
+    <System:String x:Key="Worker_Dijelovi_Title">Dijelovi na lageru</System:String>
+    <System:String x:Key="Worker_Dijelovi_NazivDijelaHint">Naziv dijela</System:String>
+    <System:String x:Key="Worker_Dijelovi_KolicinaHint">Količina</System:String>
+    <System:String x:Key="Worker_Dijelovi_DodajObnoviButton">Dodaj/Obnovi</System:String>
+    <System:String x:Key="Worker_Dijelovi_NazivHeader">Naziv</System:String>
+    <System:String x:Key="Worker_Dijelovi_KolicinaHeader">Količina</System:String>
+    <System:String x:Key="Worker_Dijelovi_UvecajButton">Uvećaj</System:String>
+    <System:String x:Key="Worker_Dijelovi_UnesiteNazivIKolicinu">Unesite naziv i količinu.</System:String>
+    <System:String x:Key="Worker_Dijelovi_ValidnaKolicina">Unesite validnu količinu (broj ≥ 0).</System:String>
+
+    <!-- RezervacijeView -->
+    <System:String x:Key="Worker_Rezervacije_Title">Rezervacije</System:String>
+    <System:String x:Key="Worker_Rezervacije_KlijentHeader">Klijent</System:String>
+    <System:String x:Key="Worker_Rezervacije_OpisProblemaHeader">Opis problema</System:String>
+    <System:String x:Key="Worker_Rezervacije_DatumUslugeHeader">Datum usluge</System:String>
+    <System:String x:Key="Worker_Rezervacije_StatusHeader">Status</System:String>
+    <System:String x:Key="Worker_Rezervacije_CijenaHeader">Cijena</System:String>
+    <System:String x:Key="Worker_Rezervacije_DetaljiKlijenta">Detalji klijenta</System:String>
+    <System:String x:Key="Worker_Rezervacije_KlijentLabel">Klijent:</System:String>
+    <System:String x:Key="Worker_Rezervacije_KontaktLabel">Kontakt:</System:String>
+    <System:String x:Key="Worker_Rezervacije_AdresaLabel">Adresa:</System:String>
+    <System:String x:Key="Worker_Rezervacije_StatusRezervacije">Status rezervacije</System:String>
+    <System:String x:Key="Worker_Rezervacije_AzurirajStatusButton">Ažuriraj status</System:String>
+    <System:String x:Key="Worker_Rezervacije_DostupneUsluge">Dostupne usluge:</System:String>
+    <System:String x:Key="Worker_Rezervacije_PotrebniDijelovi">Potrebni dijelovi:</System:String>
+    <System:String x:Key="Worker_Rezervacije_UkupnoLabel">Ukupno:</System:String>
+    <System:String x:Key="Worker_Rezervacije_DodajUslugeButton">Dodaj usluge i dijelove</System:String>
+    <System:String x:Key="Worker_Rezervacije_IzdajRacunButton">Izdaj račun</System:String>
+    <System:String x:Key="Worker_Rezervacije_IzaberiteRezervaciju">Izaberite rezervaciju.</System:String>
+    <System:String x:Key="Worker_Rezervacije_IzaberiteStatus">Izaberite status.</System:String>
+    <System:String x:Key="Worker_Rezervacije_StatusAzuriran">Status ažuriran!</System:String>
+    <System:String x:Key="Worker_Rezervacije_IzaberiteUsluguIliDio">Izaberite bar jednu uslugu ili dio.</System:String>
+    <System:String x:Key="Worker_Rezervacije_NistePrijavljeni">Niste prijavljeni kao radnik.</System:String>
+    <System:String x:Key="Worker_Rezervacije_UslugeDodati">Usluge i dijelovi uspešno dodati!</System:String>
+
+    <!-- KlijentiView -->
+    <System:String x:Key="Worker_Klijenti_Title">Upravljanje klijentima</System:String>
+    <System:String x:Key="Worker_Klijenti_DodajKlijentaButton">Dodaj klijenta</System:String>
+    <System:String x:Key="Worker_Klijenti_ObrisiKlijentaButton">Obriši klijenta</System:String>
+    <System:String x:Key="Worker_Klijenti_OsveziButton">Osvježi</System:String>
+    <System:String x:Key="Worker_Klijenti_KorisnickoImeHeader">Korisničko ime</System:String>
+    <System:String x:Key="Worker_Klijenti_PrezimeHeader">Prezime</System:String>
+    <System:String x:Key="Worker_Klijenti_KontaktHeader">Kontakt</System:String>
+    <System:String x:Key="Worker_Klijenti_AdresaHeader">Adresa</System:String>
+    <System:String x:Key="Worker_Klijenti_KorisnickoImePrompt">Korisničko ime:</System:String>
+    <System:String x:Key="Worker_Klijenti_KontaktPrompt">Kontakt (email/telefon):</System:String>
+    <System:String x:Key="Worker_Klijenti_AdresaPrompt">Adresa:</System:String>
+    <System:String x:Key="Worker_Klijenti_NoviKlijentTitle">Novi klijent</System:String>
+    <System:String x:Key="Worker_Klijenti_IzaberiteZaBrisanje">Izaberite klijenta za brisanje.</System:String>
+    <System:String x:Key="Worker_Klijenti_PotvrdaBrisanja">Da li želite da obrišete klijenta '{0}'?</System:String>
+    <System:String x:Key="Worker_Klijenti_PotvrdaBrisanjaTitle">Potvrda brisanja</System:String>
+    <System:String x:Key="Worker_Klijenti_DodajKlijentaTitle">Dodaj klijenta</System:String>
+    <System:String x:Key="Worker_Klijenti_IzmijeniKlijentaTitle">Izmijeni klijenta</System:String>
+    <System:String x:Key="Worker_Klijenti_UnesiteKorisnickoIme">Unesite korisničko ime:</System:String>
+    <System:String x:Key="Worker_Klijenti_UnesiteLozinku">Unesite lozinku:</System:String>
+    <System:String x:Key="Worker_Klijenti_UnesiteNovuLozinku">Unesite novu lozinku (ostavite prazno da zadržite trenutnu):</System:String>
+    <System:String x:Key="Worker_Klijenti_UnesiteKontakt">Unesite kontakt (opciono):</System:String>
+    <System:String x:Key="Worker_Klijenti_UnesiteAdresu">Unesite adresu (opciono):</System:String>
+
+    <!-- UpravljanjeKorisnicimaView -->
+    <System:String x:Key="Worker_UpravljanjeKorisnicima_Title">Upravljanje korisnicima</System:String>
+    <System:String x:Key="Worker_UpravljanjeKorisnicima_TabKlijenti">Klijenti</System:String>
+    <System:String x:Key="Worker_UpravljanjeKorisnicima_TabRadnici">Radnici</System:String>
+    <System:String x:Key="Worker_UpravljanjeKorisnicima_DodajRadnikaButton">Dodaj radnika</System:String>
+    <System:String x:Key="Worker_UpravljanjeKorisnicima_PromeniUloguButton">Promijeni ulogu</System:String>
+    <System:String x:Key="Worker_UpravljanjeKorisnicima_ObrisiRadnikaButton">Obriši radnika</System:String>
+    <System:String x:Key="Worker_UpravljanjeKorisnicima_ImeHeader">Ime</System:String>
+    <System:String x:Key="Worker_UpravljanjeKorisnicima_KorisnickoImeHeader">Korisničko ime</System:String>
+    <System:String x:Key="Worker_UpravljanjeKorisnicima_UlogaHeader">Uloga</System:String>
+    <System:String x:Key="Worker_Korisnici_KorisnickoImePrompt">Korisničko ime:</System:String>
+    <System:String x:Key="Worker_Korisnici_NoviKlijentTitle">Novi klijent</System:String>
+    <System:String x:Key="Worker_Korisnici_NoviRadnikTitle">Novi radnik</System:String>
+    <System:String x:Key="Worker_Korisnici_NovaUlogaPrompt">Nova uloga (Radnik/Administrator):</System:String>
+    <System:String x:Key="Worker_Korisnici_PromenaUlogeTitle">Promena uloge</System:String>
+    <System:String x:Key="Worker_Korisnici_IzaberiteZaBrisanje">Izaberite radnika za brisanje.</System:String>
+    <System:String x:Key="Worker_Korisnici_PotvrdaBrisanja">Da li želite da obrišete radnika '{0}'?</System:String>
+    <System:String x:Key="Worker_Korisnici_PotvrdaBrisanjaTitle">Potvrda brisanja</System:String>
+    <System:String x:Key="Worker_Korisnici_DodajRadnikaTitle">Dodaj radnika</System:String>
+    <System:String x:Key="Worker_Korisnici_IzmijeniRadnikaTitle">Izmijeni radnika</System:String>
+    <System:String x:Key="Worker_Korisnici_UnesiteIme">Unesite ime:</System:String>
+    <System:String x:Key="Worker_Korisnici_UnesitePrezime">Unesite prezime (opciono):</System:String>
+    <System:String x:Key="Worker_Korisnici_UnesiteKorisnickoIme">Unesite korisničko ime:</System:String>
+    <System:String x:Key="Worker_Korisnici_UnesiteLozinku">Unesite lozinku:</System:String>
+    <System:String x:Key="Worker_Korisnici_UnesiteNovuLozinku">Unesite novu lozinku (ostavite prazno da zadržite trenutnu):</System:String>
+    <System:String x:Key="Worker_Korisnici_UnesiteKontakt">Unesite kontakt (telefon/email, opciono):</System:String>
+    <System:String x:Key="Worker_Korisnici_UnesiteUlogu">Unesite ulogu (Radnik/Administrator):</System:String>
+    <System:String x:Key="Worker_Korisnici_GreskaUloga">Uloga mora biti 'Radnik' ili 'Administrator'.</System:String>
+
+    <!-- KreirajRacunView -->
+    <System:String x:Key="Worker_KreirajRacun_Title">Kreiraj račun</System:String>
+    <System:String x:Key="Worker_KreirajRacun_RezervacijaLabel">Rezervacija:</System:String>
+    <System:String x:Key="Worker_KreirajRacun_KlijentLabel">Klijent:</System:String>
+    <System:String x:Key="Worker_KreirajRacun_UslugaHeader">Usluga</System:String>
+    <System:String x:Key="Worker_KreirajRacun_KolicinaHeader">Količina</System:String>
+    <System:String x:Key="Worker_KreirajRacun_CijenaHeader">Cijena</System:String>
+    <System:String x:Key="Worker_KreirajRacun_UkupnoHeader">Ukupno</System:String>
+    <System:String x:Key="Worker_KreirajRacun_IzdajRacunButton">Izdaj račun</System:String>
+    <System:String x:Key="Worker_KreirajRacun_UkupnaCijenaLabel">Ukupno:</System:String>
+    <System:String x:Key="Worker_Racun_RacunIzdat">Račun uspešno izdat!</System:String>
+    <System:String x:Key="Worker_Racun_UspehTitle">Uspjeh</System:String>
+    <System:String x:Key="Worker_Racun_GreskaTitle">Greška</System:String>
+
+    <!-- MainMenuView - Theme Selection -->
+    <System:String x:Key="MainMenu_TemaLabel">Tema</System:String>
+    <System:String x:Key="MainMenu_TemaPlava">Plava</System:String>
+    <System:String x:Key="MainMenu_TemaZelena">Zelena</System:String>
+    <System:String x:Key="MainMenu_TemaCrvena">Crvena</System:String>
+
+    <!-- General -->
+    <System:String x:Key="Worker_Greska">Greška</System:String>
+    <System:String x:Key="OK">OK</System:String>
+    <System:String x:Key="Cancel">Otkaži</System:String>
+
+</ResourceDictionary>

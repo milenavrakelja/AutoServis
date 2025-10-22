@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="AutoServis.ClientApp.Views.TipUslugeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Naslov -->
+        <TextBlock Text="{DynamicResource TipUsluge_Title}" 
+                   FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <!-- Container za DataGrid i poruku -->
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="TipoviGrid"
+                      AutoGenerateColumns="False" IsReadOnly="True"
+                      ItemsSource="{Binding Tipovi}"
+                      Background="{DynamicResource BackgroundBrush}"
+                      Foreground="{DynamicResource ForegroundBrush}"
+                      BorderBrush="{DynamicResource BorderBrush}"
+                      GridLinesVisibility="Horizontal">
+                <DataGrid.Style>
+                    <Style TargetType="DataGrid">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsEmpty}" Value="True">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Style>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{DynamicResource TipUsluge_NazivHeader}" 
+                                        Binding="{Binding Naziv}" Width="200"/>
+                    <DataGridTextColumn Header="{DynamicResource TipUsluge_CijenaHeader}" 
+                                        Binding="{Binding Cijena, StringFormat='{}{0:N2} KM'}" Width="120"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <TextBlock Text="Nema usluga za prikaz."
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="16">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsEmpty}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,162 @@
+﻿<UserControl x:Class="AutoServis.WorkerApp.Views.RezervacijeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Naslov -->
+        <TextBlock Text="{DynamicResource Worker_Rezervacije_Title}" 
+                   Grid.Row="0"
+                   FontWeight="SemiBold" 
+                   Margin="0,0,0,10"/>
+
+        <!-- Tabela rezervacija -->
+        <Border Grid.Row="1" 
+                BorderBrush="{DynamicResource BorderBrush}" 
+                BorderThickness="1" 
+                CornerRadius="6">
+            <DataGrid x:Name="RezervacijeGrid"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectionMode="Single"
+                      SelectionChanged="RezervacijeGrid_SelectionChanged"
+                      RowHeight="32"
+                      CanUserAddRows="False"
+                      Background="{DynamicResource BackgroundBrush}"
+                      Foreground="{DynamicResource ForegroundBrush}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{DynamicResource Worker_Rezervacije_KlijentHeader}" Binding="{Binding Klijent.KorisnickoIme}" Width="120"/>
+                    <DataGridTextColumn Header="{DynamicResource Worker_Rezervacije_OpisProblemaHeader}" Binding="{Binding OpisProblema}" Width="200"/>
+                    <DataGridTextColumn Header="{DynamicResource Worker_Rezervacije_DatumUslugeHeader}" 
+                                        Binding="{Binding DatumUsluge, StringFormat='{}{0:yyyy-MM-dd}'}" 
+                                        Width="120"/>
+                    <DataGridTextColumn Header="{DynamicResource Worker_Rezervacije_StatusHeader}" Binding="{Binding Status.Opis}" Width="120"/>
+                    
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+
+        <!-- Detalji rezervacije -->
+        <Border x:Name="DetaljiPanel" 
+                Grid.Row="2" 
+                Margin="0,15,0,0"
+                Visibility="Collapsed"
+                BorderBrush="{DynamicResource BorderBrush}" 
+                BorderThickness="1" 
+                CornerRadius="6">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Gornji red: Klijent + Status -->
+                <Grid Grid.Row="0" Margin="15,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Detalji klijenta -->
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="{DynamicResource Worker_Rezervacije_DetaljiKlijenta}" 
+                                   FontWeight="Bold" 
+                                   Margin="0,0,0,8"/>
+                        <TextBlock Text="{DynamicResource Worker_Rezervacije_KlijentLabel}" FontWeight="Bold" Margin="0,0,0,2"/>
+                        <TextBlock x:Name="KlijentImeText" Text="-" Margin="0,0,0,6"/>
+                        <TextBlock Text="{DynamicResource Worker_Rezervacije_KontaktLabel}" FontWeight="Bold" Margin="0,0,0,2"/>
+                        <TextBlock x:Name="KlijentKontaktText" Text="-" Margin="0,0,0,6"/>
+                        <TextBlock Text="{DynamicResource Worker_Rezervacije_AdresaLabel}" FontWeight="Bold" Margin="0,0,0,2"/>
+                        <TextBlock x:Name="KlijentAdresaText" Text="-"/>
+                    </StackPanel>
+
+                    <!-- Status -->
+                    <StackPanel Grid.Column="1" Margin="20,0,0,0">
+                        <TextBlock Text="{DynamicResource Worker_Rezervacije_StatusRezervacije}" 
+                                   FontWeight="Bold" 
+                                   Margin="0,0,0,8"/>
+                        <ComboBox x:Name="StatusCombo" Width="160" DisplayMemberPath="Opis" Margin="0,0,0,8"/>
+                        <Button Content="{DynamicResource Worker_Rezervacije_AzurirajStatusButton}" 
+                                Click="AzurirajStatusBtn_Click" 
+                                Width="120"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Srednji red: Usluge i Dijelovi -->
+                <Grid Grid.Row="1" Margin="15,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Usluge -->
+                    <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                        <TextBlock Text="{DynamicResource Worker_Rezervacije_DostupneUsluge}" FontWeight="Bold" Margin="0,0,0,8"/>
+                        <ListBox x:Name="UslugeListBox" MaxHeight="150"
+                                 Background="{DynamicResource BackgroundBrush}"
+                                 Foreground="{DynamicResource ForegroundBrush}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Naziv}" 
+                                              Tag="{Binding}" 
+                                              Checked="Usluga_Checked" 
+                                              Unchecked="Usluga_Unchecked"
+                                              Margin="2"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+
+                    <!-- Dijelovi -->
+                    <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                        <TextBlock Text="{DynamicResource Worker_Rezervacije_PotrebniDijelovi}" FontWeight="Bold" Margin="0,0,0,8"/>
+                        <ListBox x:Name="DijeloviListBox" MaxHeight="150"
+                                 Background="{DynamicResource BackgroundBrush}"
+                                 Foreground="{DynamicResource ForegroundBrush}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <CheckBox Content="{Binding Naziv}" 
+                                                  Tag="{Binding}" 
+                                                  Checked="Dio_Checked" 
+                                                  Unchecked="Dio_Unchecked"
+                                                  Margin="2"/>
+                                        <TextBox x:Name="KolicinaBox" 
+                                                 Width="50" 
+                                                 Margin="5,0,0,0"
+                                                 Text="1"
+                                                 LostFocus="KolicinaBox_LostFocus"
+                                                 IsEnabled="False"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Donji red: Ukupna cena + Dugmad -->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,15,15">
+                    <TextBlock Text="{DynamicResource Worker_Rezervacije_UkupnoLabel}" FontWeight="Bold" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="UkupnaCenaText" Text="0.00 KM" Margin="0,0,15,0" VerticalAlignment="Center"/>
+
+                    <!-- Dugme za dodavanje usluga -->
+                    <Button Content="{DynamicResource Worker_Rezervacije_DodajUslugeButton}" 
+                            Click="DodajUslugeBtn_Click" 
+                            Width="180" Margin="0,0,10,0"/>
+
+                    <!-- Dugme za izdavanje računa -->
+                    <Button x:Name="IzdajRacunBtn"
+                            Content="{DynamicResource Worker_Rezervacije_IzdajRacunButton}" 
+                            Click="IzdajRacunBtn_Click" 
+                            Width="120"
+                            IsEnabled="False"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

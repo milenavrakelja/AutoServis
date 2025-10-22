@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="AutoServis.WorkerApp.Views.KlijentiView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Naslov -->
+        <TextBlock Text="{DynamicResource Worker_Klijenti_Title}" 
+                   FontWeight="Bold" Margin="0,0,0,15"/>
+
+        <!-- Dugmad -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,15">
+            <Button Content="{DynamicResource Worker_Klijenti_DodajKlijentaButton}" 
+                    Click="DodajKlijentaBtn_Click" Margin="5"/>
+            <Button Content="{DynamicResource Worker_Klijenti_ObrisiKlijentaButton}" 
+                    Click="ObrisiKlijentaBtn_Click" Margin="5"/>
+        </StackPanel>
+
+        <!-- Container za DataGrid i poruku -->
+        <Grid Grid.Row="2">
+            <DataGrid x:Name="KlijentiGrid"
+                      AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single"
+                      ItemsSource="{Binding Klijenti}"
+                      Background="{DynamicResource BackgroundBrush}"
+                      Foreground="{DynamicResource ForegroundBrush}"
+                      BorderBrush="{DynamicResource BorderBrush}">
+                <DataGrid.Style>
+                    <Style TargetType="DataGrid">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsEmpty}" Value="True">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Style>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{DynamicResource Worker_Klijenti_KorisnickoImeHeader}" 
+                                        Binding="{Binding KorisnickoIme}" Width="100"/>
+                    <DataGridTextColumn Header="{DynamicResource Worker_Klijenti_KontaktHeader}" 
+                                        Binding="{Binding Kontakt}" Width="150"/>
+                    <DataGridTextColumn Header="{DynamicResource Worker_Klijenti_AdresaHeader}" 
+                                        Binding="{Binding Adresa}" Width="150"/>
+                    <DataGridTextColumn Header="Lozinka" 
+                                        Binding="{Binding LozinkaPlain}" Width="100"/>
+                    <DataGridTemplateColumn Header="Akcije" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Izmijeni" 
+                                        Click="IzmijeniKlijentaBtn_Click"
+                                        Tag="{Binding}" 
+                                        Padding="4,2"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <TextBlock Text="Nema klijenata za prikaz."
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="16">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsEmpty}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+    </Grid>
+</UserControl>

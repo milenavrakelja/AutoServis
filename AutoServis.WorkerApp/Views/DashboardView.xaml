@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="AutoServis.WorkerApp.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" 
+                Background="{DynamicResource BackgroundBrush}" 
+                Padding="10">
+            <StackPanel>
+                <TextBlock Text="{Binding Uloga}" 
+                           FontWeight="Bold" 
+                           Margin="0,0,0,10"
+                           Foreground="{DynamicResource ForegroundBrush}"/>
+
+                <!-- IZBOR TEME -->
+                <TextBlock Text="{DynamicResource MainMenu_TemaLabel}" 
+                           Margin="0,0,0,5" FontWeight="SemiBold"/>
+                <ComboBox x:Name="ThemeComboBox" 
+                          SelectedIndex="0" 
+                          SelectionChanged="ThemeComboBox_SelectionChanged"
+                          Margin="0,0,0,15">
+                    <ComboBoxItem Content="{DynamicResource MainMenu_TemaPlava}" Tag="Blue"/>
+                    <ComboBoxItem Content="{DynamicResource MainMenu_TemaZelena}" Tag="Green"/>
+                    <ComboBoxItem Content="{DynamicResource MainMenu_TemaCrvena}" Tag="Red"/>
+                </ComboBox>
+
+                <!-- Zajedničke opcije -->
+                <Button x:Name="TipoviBtn" Content="{DynamicResource Worker_Dashboard_TipoviUsluge}" 
+                        Click="TipoviBtn_Click" Margin="5"/>
+                <Button x:Name="DijeloviBtn" Content="{DynamicResource Worker_Dashboard_DijeloviNaLageru}" 
+                        Click="DijeloviBtn_Click" Margin="5"/>
+                <Button x:Name="RezervacijeBtn" Content="{DynamicResource Worker_Dashboard_Rezervacije}" 
+                        Click="RezervacijeBtn_Click" Margin="5"/>
+                <Button x:Name="KlijentiBtn" Content="{DynamicResource Worker_Dashboard_Klijenti}"
+                        Click="KlijentiBtn_Click" Margin="5"/>
+
+                <!-- Samo za administratora -->
+                <Button x:Name="KorisniciBtn" Content="{DynamicResource Worker_Dashboard_UpravljanjeKorisnicima}" 
+                        Click="KorisniciBtn_Click" 
+                        Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}" 
+                        Margin="5"/>
+
+                <!-- Odjava -->
+                <Button Content="{DynamicResource Worker_Dashboard_Logout}" 
+                        Click="LogoutBtn_Click" 
+                        Foreground="{DynamicResource ForegroundBrush}" 
+                        Margin="5"/>
+            </StackPanel>
+        </Border>
+
+        <Frame x:Name="ContentFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</UserControl>

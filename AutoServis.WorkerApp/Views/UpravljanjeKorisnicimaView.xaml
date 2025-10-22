@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="AutoServis.WorkerApp.Views.UpravljanjeKorisnicimaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Naslov -->
+        <TextBlock Text="{DynamicResource Worker_UpravljanjeKorisnicima_Title}" 
+                   FontWeight="Bold" Margin="0,0,0,15"/>
+
+        <!-- Dugmad za radnike -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,15">
+            <Button Content="{DynamicResource Worker_UpravljanjeKorisnicima_DodajRadnikaButton}" 
+                    Click="DodajRadnikaBtn_Click" Margin="5"/>
+            <Button Content="{DynamicResource Worker_UpravljanjeKorisnicima_ObrisiRadnikaButton}" 
+                    Click="ObrisiRadnikaBtn_Click" Margin="5"/>
+        </StackPanel>
+
+        <!-- Tabela radnika -->
+        <DataGrid x:Name="RadniciGrid" Grid.Row="2"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  Background="{DynamicResource BackgroundBrush}"
+                  Foreground="{DynamicResource ForegroundBrush}"
+                  BorderBrush="{DynamicResource BorderBrush}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="100"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="100"/>
+                <DataGridTextColumn Header="Kontakt" Binding="{Binding Kontakt}" Width="180"/>
+                <DataGridTextColumn Header="Korisničko ime" Binding="{Binding KorisnickoIme}" Width="150"/>
+                <DataGridTextColumn Header="Lozinka (plain)" Binding="{Binding LozinkaPlain}" Width="100"/>
+                <DataGridTextColumn Header="Uloga" Binding="{Binding Uloga}" Width="100"/>
+
+                <!-- Dugme za izmenu -->
+                <DataGridTemplateColumn Header="Akcije" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Izmijeni" 
+                                    Click="IzmijeniRadnikaBtn_Click"
+                                    Tag="{Binding}" 
+                                    Padding="4,2"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

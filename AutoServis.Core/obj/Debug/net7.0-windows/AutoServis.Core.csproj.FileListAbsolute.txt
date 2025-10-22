@@ -1,0 +1,15 @@
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\obj\Debug\net7.0-windows\AutoServis.Core.csproj.AssemblyReference.cache
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\bin\Debug\net7.0-windows\AutoServis.Core.deps.json
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\bin\Debug\net7.0-windows\AutoServis.Core.runtimeconfig.json
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\bin\Debug\net7.0-windows\AutoServis.Core.dll
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\bin\Debug\net7.0-windows\AutoServis.Core.pdb
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\obj\Debug\net7.0-windows\AutoServis.Core.g.resources
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\obj\Debug\net7.0-windows\AutoServis.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\obj\Debug\net7.0-windows\AutoServis.Core.AssemblyInfoInputs.cache
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\obj\Debug\net7.0-windows\AutoServis.Core.AssemblyInfo.cs
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\obj\Debug\net7.0-windows\AutoServis.Core.csproj.CoreCompileInputs.cache
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\obj\Debug\net7.0-windows\AutoServis.Core.dll
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\obj\Debug\net7.0-windows\refint\AutoServis.Core.dll
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\obj\Debug\net7.0-windows\AutoServis.Core.pdb
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\obj\Debug\net7.0-windows\AutoServis.Core.genruntimeconfig.cache
+C:\Users\W10\Desktop\AutoServisSolution\AutoServis.Core\obj\Debug\net7.0-windows\ref\AutoServis.Core.dll
